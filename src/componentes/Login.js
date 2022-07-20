@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 
 const Login = () => {
@@ -21,7 +22,11 @@ const Login = () => {
             console.log('Credenciales Invalidas');
             return       
         }
-
+        console.log('Ahora si estas listo para enviar la info');
+        axios.post('http://challenge-react.alkemy.org', {email, password})
+        .then( res =>{
+            console.log(res);
+        })
     }
 
 
