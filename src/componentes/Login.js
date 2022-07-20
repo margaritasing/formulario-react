@@ -32,6 +32,9 @@ const Login = () => {
         .then( res =>{
            swal("Perfecto", "Ahora si estas listo para enviar la info", "success");
            console.log(res.data);
+
+           const tokenRecibido = res.data.token;
+           localStorage.setItem('token', tokenRecibido);
         })
     }
 
