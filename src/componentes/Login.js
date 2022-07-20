@@ -25,7 +25,7 @@ const Login = () => {
         console.log('Ahora si estas listo para enviar la info');
         axios.post('http://challenge-react.alkemy.org', {email, password})
         .then( res =>{
-            console.log(res);
+            console.log(res.data);
         })
     }
 
