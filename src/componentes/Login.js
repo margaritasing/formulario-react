@@ -31,18 +31,17 @@ const Login = () => {
         }
         axios.post('http://challenge-react.alkemy.org', {email, password})
         .then( res =>{
-           swal("Perfecto", "Ahora si estas listo para enviar la info", "success");
-           console.log(res.data);
+           swal("Perfecto", "Lista de Peliculas", "success");          
 
            const tokenRecibido = res.data.token;
-           localStorage.setItem('token', tokenRecibido);
+           sessionStorage.setItem('token', tokenRecibido);
            
            navigate("/listado");         
            
          })
       }
 
-      let token  = localStorage.getItem('token');     
+      let token  = sessionStorage.getItem('token');     
       
       return (
       <>
