@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -41,13 +41,16 @@ const Login = () => {
            
          })
       }
-      
+
+      let token  = localStorage.getItem('token');     
       
       return (
-      <Section className='principal'>
+      <>
+      {token && <Navigate replace to="/listado" />}
 
+      <Section className='principal'>
           <div className='login'>            
-           <h2>Formulario de login</h2>
+           <h3>Formulario de login</h3>
             <form onSubmit={submitHandler} className="formulario">
                   <label>
                      <span>Correo electronico: </span> <br/>
@@ -63,43 +66,44 @@ const Login = () => {
                   <br/>
                   <button type='submit'>Ingresar</button>   
             </form>              
-         </div> 
-      
+         </div>       
       </Section>
+      </>
   )
 }
 
 const Section = styled.section`
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
 
    
    width: 100%;  
    display:flex;
    justify-content: center;
    align-items: center;
-   font-family: 'Roboto Condensed', sans-serif;
+  
 
 
 .login{
    background-color:#FFF9CA;
-   width: 250px; 
+   width: 400px; 
    height: 250px;
    padding:10px;
    margin-top:30px;
    border-radius:25px; 
 }
 
-.login input{
+input{
    border-radius:15px;
    border:none;
-   width: 100%; 
-   height: 20px;
+   width: 350px; 
+   height: 30px;
    margin:10px 10px 10px 0;
    background-color:#fff;
 }
 
-.login h2{
+.login h3{
    text-align:center;
+   font-size:20px;
 }
 
 .login button{
