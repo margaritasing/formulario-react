@@ -24,7 +24,7 @@ const Resultados = (props) => {
             setMovieResult(movieArrays)                
         })
         .catch(error =>{
-            console.log("hubo un error")
+          swal("Error", "Hubo un error", "error")
         })
       
     }, [keyword])
@@ -37,7 +37,7 @@ const Resultados = (props) => {
 
     {!token && <Navigate replace to="/" />}
 
-        <h2>Buscate: <em>{keyword}</em></h2>  
+        <h2 className='text-white'>Buscate: <em>{keyword}</em></h2>  
         {moviesResult.length === 0 && <h3>No hay resultados</h3>}     
         <div className="row my-2 mx-2">
     {
