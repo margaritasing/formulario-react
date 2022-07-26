@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import swal from 'sweetalert'
 import axios from 'axios';
 
 const Detalle = () => {
@@ -19,14 +20,14 @@ const Detalle = () => {
             setMovie(movieData)
         })
         .catch(error =>{
-            console.log("hubo un error")
+            swal("Error", "Hubo un error", "error")
         })
       
         }, [movieID])
     
 
   return (
-    <div className="row">
+    <div className="row text-white">
     {!token && <Navigate replace to="/" />}
     {!movie && <h2>Cargando</h2>}
     { movie &&
