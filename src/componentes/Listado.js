@@ -1,31 +1,15 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Link, Navigate } from "react-router-dom";
-import swal from 'sweetalert';
+import { useStateValue } from '../reducer/StateProvider';
 
 
 
 
 const Listado = (props) => {   
-  
 
-  let token  = sessionStorage.getItem('token');
+  const[{filterMovies}] = useStateValue();
 
-  const [movieList, setMovieList] = useState([])
-
-  useEffect(() => {
-   const endPoint = 'https://api.themoviedb.org/3/discover/movie?api_key=75b9f04bb9ba776a3e2318bbe7838f21&language=es-ES&page=1';
-   axios.get(endPoint)
-        .then( response =>{        
-          const apiData = response.data;
-          setMovieList(apiData.results)
-        })  
-        .catch(error=>{
-          swal("Error","Hubo errores, intenta mas tarde","error"); 
-        } )
-  }, [setMovieList]);
-
+  let token  = sessionStorage.getItem('token');  
   
   
   
@@ -35,7 +19,7 @@ const Listado = (props) => {
     {!token && <Navigate replace to="/" />}
     <div className="row my-2 mx-2">
     {
-        movieList.map( (oneMovie, index) => {
+        filterMovies?.map( (oneMovie, index) => {
           return(
             
                   <div className="col-3" key={index}>
