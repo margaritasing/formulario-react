@@ -8,7 +8,7 @@ const Favoritos = (props) => {
       return (
         <>
         {!token && <Navigate replace to="/" />}
-        <h2>Favoritos</h2>
+        <h2 className='text-white'>Favoritos</h2>
           <div className="row my-2 mx-2">
           {!props.favoritos.length && <div className='col-12 text-danger'>No Hay Nada en Favoritos</div> }
               {
