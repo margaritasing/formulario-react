@@ -18,8 +18,11 @@ const Buscador = () => {
         }
     }
 
+    
+
   return (
     <div>
+   
             <form className=" d-flex align-items-center" onSubmit={submitHandler}>
                   <label className="form-label mb-0 mx-2">                     
                         <input type='text' name='keyword' style={{borderRadius:"10px", height:"40px"}} placeholder=' Buscar' />          

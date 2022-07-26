@@ -20,7 +20,7 @@ const Login = () => {
            return      
         }
 
-        if(email !== ''&& !regexEmail.test(email)){
+        if(email !== '' && !regexEmail.test(email)){
            swal("Error","Debes escribir un correo valido","error");
            return
         }
