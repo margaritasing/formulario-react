@@ -11,7 +11,7 @@ const Resultados = (props) => {
     let query = new URLSearchParams(window.location.search);
     let keyword = query.get('keyword');
 
-    console.log(keyword)
+
 
 
     const[moviesResult, setMovieResult] = useState([]);
