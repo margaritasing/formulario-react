@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import swal from 'sweetalert'
+import swal from 'sweetalert';
 import axios from 'axios';
 
 const Detalle = () => {
@@ -11,7 +11,7 @@ const Detalle = () => {
 
     let query = new URLSearchParams(window.location.search);
     let movieID= query.get('movieID')
-
+ 
 
     useEffect(() => {       
         const endPoint = `https://api.themoviedb.org/3/movie/${movieID}?api_key=75b9f04bb9ba776a3e2318bbe7838f21&language=es-ES`
