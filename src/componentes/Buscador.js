@@ -16,10 +16,12 @@ const Buscador = () => {
             e.currentTarget.keyword.value = '';
             navigate(`/resultados?keyword=${keyword}`)
         }
+
+      
     }
 
     
-
+    
   return (
     <div>
    
