@@ -45,7 +45,7 @@ const Listado = (props) => {
                     <div className="card my-2">
                       <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`} style={{height:"300px"}} className="card-img-top" alt="..."/>
                         <button className="favorito"
-                        onClick={props.addOrRemoveFromFavs}
+                        onClick={props.addOrRemoveFromFavs} 
                         data-movie-id={oneMovie.id}>🖤
                         </button>
                        <div className="card-body text-center" style={{height:"220px"}}>
