@@ -9,6 +9,7 @@ import Resultados from "./componentes/Resultados";
 import Favoritos from "./componentes/Favoritos";
 import swal from 'sweetalert';
 import "./App.css"
+import Banderas from "./componentes/Banderas";
 
 
 function App() { 
@@ -84,7 +85,8 @@ function App() {
             <Route path="/detalle"  element={<Detalle />} /> 
             <Route path="/resultados"  element={<Resultados addOrRemoveFromFavs={addOrRemoveFromFavs}  />} />
             <Route path="/favoritos"  element={<Favoritos favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}  />} />            
-          </Routes> 
+            <Route path="/banderas"  element={<Banderas />} /> 
+            </Routes> 
       </div>
      
     </BrowserRouter>  
