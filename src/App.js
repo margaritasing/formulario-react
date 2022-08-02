@@ -1,36 +1,18 @@
 
 import { BrowserRouter,Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import  { actionType } from './reducer/reducer'
-import { useStateValue } from "./reducer/StateProvider";
 import Login from './componentes/Login';
 import Listado from "./componentes/Listado";
 import Header from "./componentes/Header";
 import Detalle from "./componentes/Detalle";
 import Resultados from "./componentes/Resultados";
 import Favoritos from "./componentes/Favoritos";
-import Generos from "./componentes/Generos";
 import swal from 'sweetalert';
-import axios from 'axios';
 import "./App.css"
 
 
 function App() { 
-  const[{filterMovies, movies}, dispatch] = useStateValue();
 
-  useEffect(() => {       
-    const endPoint = 'https://api.themoviedb.org/3/discover/movie?api_key=75b9f04bb9ba776a3e2318bbe7838f21&language=es-ES&page=1';
-    axios.get(endPoint).then(response =>{
-        dispatch({
-          type:actionType.MOVIES,
-          movies: response.data.results
-        })       
-    })
-    .catch(error =>{
-        swal("Error", "Hubo un error", "error")
-    })
-  
-    }, [])
  
 
 
@@ -98,11 +80,10 @@ function App() {
       <div className="container">
           <Routes>
             <Route exact path="/" element={<Login />} />     
-            <Route path="/listado"  element={  <Listado addOrRemoveFromFavs={addOrRemoveFromFavs} />} />
-            <Route path="/detalle"  element={<Detalle />} />
+            <Route path="/listado"  element={  <Listado addOrRemoveFromFavs={addOrRemoveFromFavs} />} /> {/*  */}
+            <Route path="/detalle"  element={<Detalle />} /> 
             <Route path="/resultados"  element={<Resultados addOrRemoveFromFavs={addOrRemoveFromFavs}  />} />
-            <Route path="/favoritos"  element={<Favoritos favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}  />} />
-            <Route path="/generos" element={<Generos />}/>
+            <Route path="/favoritos"  element={<Favoritos favoritos={favoritos} addOrRemoveFromFavs={addOrRemoveFromFavs}  />} />            
           </Routes> 
       </div>
      
