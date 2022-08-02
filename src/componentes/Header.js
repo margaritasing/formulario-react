@@ -17,8 +17,7 @@ const Header = (props) => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
                 <Link to="/" className="nav-link active" aria-current="page" >Home</Link>
-                <Link to="/listado" className="nav-link" >Listado</Link> 
-                <Link to="/generos" className="nav-link" >Generos</Link>   
+                <Link to="/listado" className="nav-link" >Listado</Link>                    
                 <Link to="/favoritos" className="nav-link" >Favoritos</Link>     
                 <span className='d-flex text-white align-items-center'>       
                 {
