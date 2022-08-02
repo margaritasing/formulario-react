@@ -11,6 +11,8 @@ const Resultados = (props) => {
     let query = new URLSearchParams(window.location.search);
     let keyword = query.get('keyword');
 
+    console.log(keyword)
+
 
     const[moviesResult, setMovieResult] = useState([]);
 
@@ -18,6 +20,7 @@ const Resultados = (props) => {
         const endPoint = `https://api.themoviedb.org/3/search/movie?api_key=75b9f04bb9ba776a3e2318bbe7838f21&language=es-ES&include_adult=false&query=${keyword}`
         axios.get(endPoint).then(response =>{
             const movieArrays = response.data.results;
+            console.log(movieArrays)
             if (movieArrays.length === 0) {
                 swal("Error","No hubo resultados","error"); 
             }
@@ -32,13 +35,14 @@ const Resultados = (props) => {
     
     let token  = sessionStorage.getItem('token');
 
+  
+
   return (
     <>
 
     {!token && <Navigate replace to="/" />}
-
         <h2 className='text-white'>Buscate: <em>{keyword}</em></h2>  
-        {moviesResult.length === 0 && <h3>No hay resultados</h3>}     
+        {moviesResult.length === 0 && <h3 className='text-white'>No hay resultados</h3>}     
         <div className="row my-2 mx-2">
     {
         moviesResult.map( (oneMovie, index) => {
