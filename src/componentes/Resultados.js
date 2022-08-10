@@ -1,47 +1,46 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation} from "react-router-dom";
 import swal from 'sweetalert';
 
 
 const Resultados = (props) => {
-
+    
 
     let query = new URLSearchParams(window.location.search);
     let keyword = query.get('keyword');
 
-
-
+    const location = useLocation();
+    const [results, setResults] = useState(keyword)
 
     const[moviesResult, setMovieResult] = useState([]);
 
     useEffect(() => {
+        setResults(keyword)
+    }, [location, keyword])
+    
+
+    useEffect(() => {
         const endPoint = `https://api.themoviedb.org/3/search/movie?api_key=75b9f04bb9ba776a3e2318bbe7838f21&language=es-ES&include_adult=false&query=${keyword}`
         axios.get(endPoint).then(response =>{
-            const movieArrays = response.data.results;
-            console.log(movieArrays)
+            const movieArrays = response.data.results;           
             if (movieArrays.length === 0) {
                 swal("Error","No hubo resultados","error"); 
             }
-            setMovieResult(movieArrays)                
+            setMovieResult(movieArrays)                      
         })
         .catch(error =>{
           swal("Error", "Hubo un error", "error")
-        })
-      
-    }, [keyword])
-
-    
-    let token  = sessionStorage.getItem('token');
-
-  
+        })            
+    }, [keyword])    
+    let token  = sessionStorage.getItem('token'); 
 
   return (
     <>
 
     {!token && <Navigate replace to="/" />}
-        <h2 className='text-white'>Buscate: <em>{keyword}</em></h2>  
+        <h2 className='text-white'>Buscate: <em>{results}</em></h2>  
         {moviesResult.length === 0 && <h3 className='text-white'>No hay resultados</h3>}     
         <div className="row my-2 mx-2">
     {
@@ -53,7 +52,7 @@ const Resultados = (props) => {
                   <button className="favorito"
                   onClick={props.addOrRemoveFromFavs}
                   data-movie-id={oneMovie.id}>🖤
-                  </button>  
+                  </button>                   
                   <div className="card-body text-center" style={{height:"200px"}}>
                       <h5 className="card-title">{oneMovie.title.substring(0, 30)}</h5>  
                       <p className="card-text">{oneMovie.overview.substring(0, 100)}...</p>                   
